@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/spells/SpellShield.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/spells/SpellMagicBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/spells/SpellPowerBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/spells/SpellManager.gd" type="Script" id=4]
+
+[node name="SpellManager" type="Node2D"]
+z_index = 200
+script = ExtResource( 4 )
+
+[node name="SpellShield" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="Spells" type="Node2D" parent="."]
+
+[node name="SpellMagicBullet" parent="Spells" instance=ExtResource( 2 )]
+visible = false
+
+[node name="SpellPowerBeam" parent="Spells" instance=ExtResource( 3 )]
+visible = false
+enabled = false
