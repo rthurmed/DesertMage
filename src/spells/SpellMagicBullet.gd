@@ -26,7 +26,7 @@ func fire():
 	bullet.rotation = rotation
 	bullet.position = exit_point.global_position
 	
-	get_tree().get_current_scene().add_child(bullet)
+	get_tree().get_current_scene().get_stage().add_child(bullet)
 	
 	recharging = true
 	timer.start()

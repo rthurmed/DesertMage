@@ -8,6 +8,7 @@ export var speed: float = 600
 
 var time_fade_after_collision = 2
 var collided = false
+var knockback_power = 5.0
 
 
 func _process(delta):
@@ -20,7 +21,7 @@ func _process(delta):
 	if collided:
 		var body = collision.collider
 		if body.has_method("hit"):
-			body.hit(damage)
+			body.hit(damage, Vector2.RIGHT.rotated(rotation), knockback_power)
 			finish()
 		else:
 			# If dont have "hit" method most likely is a wall or object, so the bullet must get stuck

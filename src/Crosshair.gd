@@ -8,6 +8,7 @@ const JOYPAD_AIM_DISTANCE = 100
 const CROSSHAIR_SMOOTHING = 16
 
 var target = Vector2.ZERO
+var hidden = false
 
 
 func _input(event):
@@ -25,7 +26,12 @@ func _process(delta):
 	var viewport_rect = get_viewport_rect()
 	var view_size = viewport_rect.size / 1.5
 	
-	visible = get_parent().global_position.distance_to(global_position) > 1
+	hidden = get_parent().global_position.distance_to(global_position) <= 1
+	
+	visible = not hidden
 	position = lerp(position, target, delta * CROSSHAIR_SMOOTHING)
 	position.x = clamp(position.x, -view_size.x, view_size.x)
 	position.y = clamp(position.y, -view_size.y, view_size.y)
+	
+	if hidden:
+		target = get_parent().movement.normalized()

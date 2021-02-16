@@ -102,7 +102,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 15 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -110,6 +110,7 @@ position = Vector2( 0, -0.5 )
 shape = SubResource( 16 )
 
 [node name="Crosshair" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 28.0636, 0 )
 z_index = 201
 script = ExtResource( 7 )

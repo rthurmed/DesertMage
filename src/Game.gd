@@ -2,6 +2,7 @@ extends Node2D
 
 
 onready var pause_menu = $CanvasLayer/PauseMenu
+onready var resume_button = $CanvasLayer/PauseMenu/ResumeButton
 
 var paused = false
 
@@ -23,8 +24,13 @@ func update_pause(value):
 	
 	if paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		resume_button.grab_focus()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func get_stage():
+	return get_node("TestWorld/YSort")
 
 
 func _on_ResumeButton_pressed():
