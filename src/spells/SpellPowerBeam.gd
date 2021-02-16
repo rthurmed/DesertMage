@@ -54,8 +54,9 @@ func _process(delta):
 	if colliding_raycast >= 0:
 		var raycast: RayCast2D = raycasts.get_children()[colliding_raycast]
 		var body: Node = raycast.get_collider()
+		var pos = raycast.get_collision_point()
 		if body.has_method("hit"):
-			body.hit(damage, Vector2.RIGHT.rotated(rotation), knockback_power)
+			body.hit(damage, pos, Vector2.RIGHT.rotated(rotation), knockback_power)
 
 
 func update_raycasts():

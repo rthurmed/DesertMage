@@ -21,7 +21,7 @@ func _process(delta):
 	if collided:
 		var body = collision.collider
 		if body.has_method("hit"):
-			body.hit(damage, Vector2.RIGHT.rotated(rotation), knockback_power)
+			body.hit(damage, collision.position, Vector2.RIGHT.rotated(rotation), knockback_power)
 			finish()
 		else:
 			# If dont have "hit" method most likely is a wall or object, so the bullet must get stuck

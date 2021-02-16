@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Desert Mage"
 run/main_scene="res://src/Game.tscn"
+boot_splash/bg_color=Color( 0.247059, 0.156863, 0.196078, 1 )
 config/icon="res://icon.png"
 
 [display]
