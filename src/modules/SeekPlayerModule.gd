@@ -9,8 +9,8 @@ var player: KinematicBody2D
 var seeing_player: bool = false
 var distance: float = 0.0
 
-signal start_seeing_player
-signal stop_seeing_player
+signal start_seeing_player(pos)
+signal stop_seeing_player(pos)
 
 
 func _ready():
@@ -33,6 +33,6 @@ func _process(_delta):
 	
 	if old_seeing != seeing_player:
 		if seeing_player:
-			emit_signal("start_seeing_player")
+			emit_signal("start_seeing_player", player.global_position)
 		else:
-			emit_signal("stop_seeing_player")
+			emit_signal("stop_seeing_player", player.global_position)
