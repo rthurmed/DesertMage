@@ -89,12 +89,13 @@ polygon = PoolVector2Array( 0, 16, -9.53674e-07, 0, 200, 0, 200, 16 )
 
 [node name="Cloud" type="AnimatedSprite" parent="ExitPoint"]
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CloudEnd" type="AnimatedSprite" parent="ExitPoint"]
 position = Vector2( 200, 0 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="RayCasts" type="Node2D" parent="ExitPoint"]

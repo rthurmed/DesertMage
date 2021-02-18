@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/imp-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/enemies/Imp.gd" type="Script" id=2]
+[ext_resource path="res://src/modules/KnockbackModule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/modules/BloodParticlesModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/modules/SeekPlayerModule.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 72, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 6.93744
+height = 7.70402
+
+[node name="Imp" type="KinematicBody2D"]
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 2 )
+rotation = -0.911864
+shape = SubResource( 6 )
+
+[node name="KnockbackModule" parent="." instance=ExtResource( 3 )]
+body_path = NodePath("..")
+
+[node name="BloodParticlesModule" parent="." instance=ExtResource( 4 )]
+
+[node name="SeekPlayerModule" parent="." instance=ExtResource( 5 )]
