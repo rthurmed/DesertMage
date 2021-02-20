@@ -2,37 +2,21 @@ extends KinematicBody2D
 
 
 onready var lifespan: Timer = $Lifespan
-
-export var damage: float = 1.0
-export var speed: float = 600
-
-var collided = false
-var knockback_power = 5.0
-var time_fade_after_collision = 2
-
-
-func _process(delta):
-	if collided:
-		return
-	
-	var collision: KinematicCollision2D = move_and_collide(Vector2.RIGHT.rotated(rotation) * delta * speed)
-	collided = collision != null
-	
-	if collided:
-		var body = collision.collider
-		if body.has_method("hit"):
-			body.hit(damage, collision.position, Vector2.RIGHT.rotated(rotation), knockback_power)
-			finish()
-		else:
-			# If dont have "hit" method most likely is a wall or object, so the bullet must get stuck
-			lifespan.wait_time = time_fade_after_collision
-			lifespan.start()
-
-
-func _on_Lifespan_timeout():
-	finish()
+onready var animation: Timer = $AnimationPlayer
 
 
 func finish():
-	# TODO: Bullet explosion animation
-	queue_free()
+	animation.play("finish")
+
+
+func _on_ProjectileModule_collided(_collision):
+	finish()
+
+
+func _on_ProjectileModule_timeout(_pos):
+	finish()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "finish":
+		queue_free()

@@ -13,7 +13,7 @@ onready var shape = $CollisionShape2D
 onready var animation = $AnimationPlayer
 
 var player: KinematicBody2D
-var life = 10
+var life = 20
 var dying = false
 
 

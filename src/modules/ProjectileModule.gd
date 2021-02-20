@@ -14,6 +14,7 @@ var body: KinematicBody2D
 var collided = false
 
 signal collided(collision)
+signal timeout(pos)
 
 
 func _ready():
@@ -40,3 +41,7 @@ func _on_ProjectileModule_collided(_collision):
 	if not self_manage:
 		return
 	body.queue_free()
+
+
+func _on_Lifespan_timeout():
+	emit_signal("timeout", global_position)

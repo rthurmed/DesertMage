@@ -2,11 +2,13 @@ extends Node2D
 
 
 enum Spells {
+	EMPTY = -1
 	MAGIC_BULLET = 0,
 	POWER_BEAM = 1
 }
 
 onready var spells = $Spells
+onready var shield = $SpellShield
 
 var active_spell = Spells.POWER_BEAM
 var last_spell = Spells.MAGIC_BULLET
@@ -19,6 +21,13 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("spell_switch"):
 		set_active_spell(last_spell)
+
+
+func deactivate():
+	active_spell = Spells.EMPTY
+	last_spell = Spells.EMPTY
+	shield.enabled = false
+	update_spells()
 
 
 func set_active_spell(spell):

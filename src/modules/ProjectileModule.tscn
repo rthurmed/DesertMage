@@ -9,3 +9,4 @@ script = ExtResource( 1 )
 wait_time = 0.5
 autostart = true
 [connection signal="collided" from="." to="." method="_on_ProjectileModule_collided"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_Lifespan_timeout"]
