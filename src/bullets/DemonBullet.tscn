@@ -21,4 +21,3 @@ shape = SubResource( 1 )
 [node name="ProjectileModule" parent="." instance=ExtResource( 2 )]
 body_path = NodePath("..")
 speed = 150.0
-knockback_power = 20.0

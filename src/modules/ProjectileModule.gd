@@ -24,7 +24,7 @@ func _process(delta):
 	if collided:
 		return
 	
-	var collision: KinematicCollision2D = body.move_and_collide(Vector2.RIGHT.rotated(body.rotation) * delta * speed)
+	var collision: KinematicCollision2D = body.move_and_collide(Vector2.RIGHT.rotated(global_rotation) * delta * speed)
 	collided = collision != null
 	
 	if collided:
@@ -33,7 +33,7 @@ func _process(delta):
 		emit_signal("collided", collision)
 		
 		if body.has_method("hit"):
-			body.hit(damage, collision.position, Vector2.RIGHT.rotated(body.rotation), knockback_power)
+			body.hit(damage, collision.position, Vector2.RIGHT.rotated(global_rotation), knockback_power)
 
 
 func _on_ProjectileModule_collided(_collision):
