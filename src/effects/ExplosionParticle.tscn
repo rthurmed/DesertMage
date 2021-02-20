@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="ExplosionParticle" type="CPUParticles2D"]
+emitting = false
+amount = 128
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.7
+fixed_fps = 60
+direction = Vector2( 1, 1 )
+spread = 180.0
+initial_velocity = 600.0
+initial_velocity_random = 0.3
+scale_amount = 2.0
+color = Color( 0.968627, 0.462745, 0.133333, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+anim_speed_random = 1.0

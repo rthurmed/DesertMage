@@ -6,6 +6,7 @@ onready var lock_timer = $LockTimer
 export var body_path: NodePath
 export var evade_speed = 200
 export var evade_block_time = 2
+export var enabled = true
 
 var body: KinematicBody2D
 var evade_vec = Vector2.ZERO
@@ -20,6 +21,9 @@ func _ready():
 
 
 func _process(delta):
+	if not enabled:
+		return
+	
 	# warning-ignore:return_value_discarded
 	body.move_and_slide(evade_vec * evade_speed)
 	evade_vec = lerp(evade_vec, Vector2.ZERO, delta)

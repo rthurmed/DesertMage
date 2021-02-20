@@ -9,8 +9,12 @@ onready var path_finding_delay = $PathFindingModule/DelayTimer
 onready var side_evade_module = $SideEvadeModule
 onready var shooting_module = $ShootingModule
 onready var sprite = $AnimatedSprite
+onready var shape = $CollisionShape2D
+onready var animation = $AnimationPlayer
 
 var player: KinematicBody2D
+var life = 10
+var dying = false
 
 
 func _ready():
@@ -18,16 +22,33 @@ func _ready():
 
 
 func _process(_delta):
+	if dying:
+		return
+	
 	if seek_player_module.seeing_player:
 		path_finding_module.make_path_to(player.global_position)
 		shooting_module.target = player.global_position
 		sprite.flip_h = global_position < player.global_position
+		shape.scale.x = -1 if sprite.flip_h else 1
 
 
-func hit(_damage, point: Vector2, knockback: Vector2, power: float):
+func hit(damage: float, point: Vector2, knockback: Vector2, power: float):
 	knockback_module.apply(knockback, power)
 	blood_particles_module.particle(point)
 	side_evade_module.evade(player.global_position.angle_to_point(point))
+	
+	life -= damage
+	
+	if life < 0:
+		die()
+
+
+func die():
+	dying = true
+	shooting_module.keep_shooting = false
+	side_evade_module.enabled = false
+	path_finding_module.enabled = false
+	animation.play("die")
 
 
 func _on_SeekPlayerModule_start_seeing_player(_pos):
@@ -45,3 +66,8 @@ func _on_DelayTimer_timeout():
 
 func _on_PathFindingModule_reached():
 	pass
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "die":
+		queue_free()

@@ -4,6 +4,7 @@ export var body_path: NodePath
 export var max_distance: float = 48
 export var speed: float = 65
 export var active: bool = false
+export var enabled: bool = true
 
 onready var line: Line2D = $Line2D
 
@@ -24,7 +25,7 @@ func _ready():
 
 
 func _process(delta):
-	if not active:
+	if not enabled or not active:
 		return
 	
 	follow_path(delta)
