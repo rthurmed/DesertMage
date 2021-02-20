@@ -3,6 +3,8 @@ extends KinematicBody2D
 
 const SPEED = 8000
 
+onready var knockback_module = $KnockbackModule
+onready var blood_particles_module = $BloodParticlesModule
 onready var crosshair: Node2D = $Crosshair
 onready var camera: Camera2D = $Camera2D
 onready var sprite: AnimatedSprite = $AnimatedSprite
@@ -39,3 +41,8 @@ func process_animation(_delta):
 		sprite.play("walk")
 	else:
 		sprite.play("idle")
+
+
+func hit(_damage, point: Vector2, knockback: Vector2, power: float):
+	knockback_module.apply(knockback, power)
+	blood_particles_module.particle(point)

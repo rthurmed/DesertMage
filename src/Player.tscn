@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/wizard-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
 [ext_resource path="res://src/spells/SpellManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/modules/KnockbackModule.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/modules/BloodParticlesModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Crosshair.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -102,7 +104,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 15 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -123,3 +125,9 @@ texture = ExtResource( 3 )
 current = true
 
 [node name="SpellManager" parent="." instance=ExtResource( 4 )]
+
+[node name="KnockbackModule" parent="." instance=ExtResource( 5 )]
+body_path = NodePath("..")
+
+[node name="BloodParticlesModule" parent="." instance=ExtResource( 6 )]
+blood_color = Color( 1, 0, 0.266667, 1 )

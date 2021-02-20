@@ -6,9 +6,9 @@ onready var lifespan: Timer = $Lifespan
 export var damage: float = 1.0
 export var speed: float = 600
 
-var time_fade_after_collision = 2
 var collided = false
 var knockback_power = 5.0
+var time_fade_after_collision = 2
 
 
 func _process(delta):
