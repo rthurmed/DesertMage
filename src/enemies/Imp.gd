@@ -5,6 +5,7 @@ onready var knockback_module = $KnockbackModule
 onready var blood_particles_module = $BloodParticlesModule
 onready var seek_player_module = $SeekPlayerModule
 onready var path_finding_module = $PathFindingModule
+onready var side_evade_module = $SideEvadeModule
 onready var path_finding_delay = $PathFindingModule/DelayTimer
 
 var player: KinematicBody2D
@@ -22,6 +23,7 @@ func _process(_delta):
 func hit(_damage, point: Vector2, knockback: Vector2, power: float):
 	knockback_module.apply(knockback, power)
 	blood_particles_module.particle(point)
+	side_evade_module.evade(player.global_position.angle_to_point(point))
 
 
 func _on_SeekPlayerModule_start_seeing_player(_pos):
@@ -30,3 +32,7 @@ func _on_SeekPlayerModule_start_seeing_player(_pos):
 
 func _on_DelayTimer_timeout():
 	path_finding_module.active = true
+
+
+func _on_PathFindingModule_reached():
+	pass

@@ -28,8 +28,7 @@ func _process(_delta):
 	var old_seeing = seeing_player
 	var collider = raycast.get_collider()
 	
-	if collider != null:
-		seeing_player = collider.name == "Player"
+	seeing_player = collider != null and collider.name == "Player"
 	
 	if old_seeing != seeing_player:
 		if seeing_player:
