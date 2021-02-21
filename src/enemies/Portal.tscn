@@ -98,7 +98,10 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="Portal" type="KinematicBody2D"]
+[node name="Portal" type="KinematicBody2D" groups=[
+"enemy",
+"portal",
+]]
 collision_mask = 3
 script = ExtResource( 2 )
 
@@ -121,7 +124,6 @@ shape = SubResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="BloodParticlesModule" parent="." instance=ExtResource( 3 )]

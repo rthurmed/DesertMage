@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Desert Mage"
-run/main_scene="res://src/levels/TestWorld.tscn"
+run/main_scene="res://src/levels/CanyonLab.tscn"
 boot_splash/bg_color=Color( 0.247059, 0.156863, 0.196078, 1 )
 config/icon="res://icon.png"
 

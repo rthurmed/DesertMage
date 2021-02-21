@@ -17,7 +17,7 @@ onready var audio_damage = $Audio/Damage
 onready var audio_damage_timer = $Audio/Damage/AudioDamageTimer
 
 var player: KinematicBody2D
-var life = 20
+var life = 14
 var dying = false
 var playing_damage_sound = false
 
