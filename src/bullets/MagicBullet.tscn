@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/bullet.png" type="Texture" id=1]
 [ext_resource path="res://src/bullets/MagicBullet.gd" type="Script" id=2]
 [ext_resource path="res://src/effects/ExplosionParticle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/modules/ProjectileModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sound/magic_bullet.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.0
@@ -66,6 +67,11 @@ hue_variation_random = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/finish = SubResource( 2 )
+
+[node name="FlyingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "Sfx"
 [connection signal="collided" from="ProjectileModule" to="." method="_on_ProjectileModule_collided"]
 [connection signal="timeout" from="ProjectileModule" to="." method="_on_ProjectileModule_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

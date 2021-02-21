@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Demon_09.wav-64f3f613117dc0140a182c854dd2ba4b.sample"
+
+[deps]
+
+source_file="res://assets/sound/Voices_Sound_Effect_Library/Demon_09.wav"
+dest_files=[ "res://.import/Demon_09.wav-64f3f613117dc0140a182c854dd2ba4b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/props/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemies/Dummy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemies/Imp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/music/Desert_Mystic By Polygondan/Desert Mystic2.ogg" type="AudioStream" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 537, -166, 572, -189, 646, -177, 649, 66, 536, -116, 402, 26, 394, -67, 424, -81, 456, -75, 420, 44, 426, -131, 390, -116, 408, -204, 232, -126, 234, -246, 307, -247, 325, -230, 348, -115, 343, -70, 512, -95, 525, -110, 627, 85, 594, 92, 468, 90, 479, -89, 428, 84, 367, -60, 215, 25, 197, 18, 198, -104, 205, -120, 501, -203, 514, -218, 541, -217, 560, -213, 489, -167, 443, -198, 479, -154, 458, -148, 358, -227, 373, -218, 447, -139 )
@@ -121,3 +122,8 @@ position = Vector2( 520, 112 )
 position = Vector2( 536, 112 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"

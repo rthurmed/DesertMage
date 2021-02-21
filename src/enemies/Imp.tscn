@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/imp-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/enemies/Imp.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://src/modules/ShootingModule.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/bullets/DemonBullet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/effects/ExplosionParticle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sound/Voices_Sound_Effect_Library/Demon_10.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/Voices_Sound_Effect_Library/Demon_20.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/Voices_Sound_Effect_Library/Demon_09.wav" type="AudioStream" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -172,6 +175,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.388235, 0.780392, 0.301961, 1 ), Color( 0.388235, 0.780392, 0.301961, 0.784314 ), Color( 0.388235, 0.780392, 0.301961, 1 ), Color( 0.388235, 0.780392, 0.301961, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Audio/Scream:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.65 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Imp" type="KinematicBody2D" groups=[
 "enemy",
@@ -212,8 +227,26 @@ anims/die = SubResource( 19 )
 
 [node name="ExplosionParticle" parent="." instance=ExtResource( 10 )]
 color = Color( 0.388235, 0.780392, 0.301961, 1 )
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Bark" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 11 )
+bus = "Sfx"
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 12 )
+bus = "Sfx"
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 13 )
+bus = "Sfx"
+
+[node name="AudioDamageTimer" type="Timer" parent="Audio/Damage"]
+wait_time = 1.2
 [connection signal="start_seeing_player" from="SeekPlayerModule" to="." method="_on_SeekPlayerModule_start_seeing_player"]
 [connection signal="stop_seeing_player" from="SeekPlayerModule" to="." method="_on_SeekPlayerModule_stop_seeing_player"]
 [connection signal="reached" from="PathFindingModule" to="." method="_on_PathFindingModule_reached"]
 [connection signal="timeout" from="PathFindingModule/DelayTimer" to="." method="_on_DelayTimer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Audio/Damage/AudioDamageTimer" to="." method="_on_AudioDamageTimer_timeout"]

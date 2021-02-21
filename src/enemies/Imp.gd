@@ -11,10 +11,15 @@ onready var shooting_module = $ShootingModule
 onready var sprite = $AnimatedSprite
 onready var shape = $CollisionShape2D
 onready var animation = $AnimationPlayer
+onready var audio_bark = $Audio/Bark
+onready var audio_scream = $Audio/Scream
+onready var audio_damage = $Audio/Damage
+onready var audio_damage_timer = $Audio/Damage/AudioDamageTimer
 
 var player: KinematicBody2D
 var life = 20
 var dying = false
+var playing_damage_sound = false
 
 
 func _ready():
@@ -37,8 +42,12 @@ func hit(damage: float, point: Vector2, knockback: Vector2, power: float):
 	blood_particles_module.particle(point)
 	side_evade_module.evade(player.global_position.angle_to_point(point))
 	
-	life -= damage
+	if not playing_damage_sound:
+		playing_damage_sound = true
+		audio_damage_timer.start()
+		audio_damage.play()
 	
+	life -= damage
 	if life < 0:
 		die()
 
@@ -54,6 +63,7 @@ func die():
 func _on_SeekPlayerModule_start_seeing_player(_pos):
 	path_finding_delay.start()
 	shooting_module.keep_shooting = true
+	audio_bark.play()
 
 
 func _on_SeekPlayerModule_stop_seeing_player(_pos):
@@ -71,3 +81,7 @@ func _on_PathFindingModule_reached():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
 		queue_free()
+
+
+func _on_AudioDamageTimer_timeout():
+	playing_damage_sound = false
