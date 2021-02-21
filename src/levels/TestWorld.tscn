@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/enemies/Imp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/music/Desert_Mystic By Polygondan/Desert Mystic2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/enemies/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/levels/TestWorld.gd" type="Script" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 537, -166, 572, -189, 646, -177, 649, 66, 536, -116, 402, 26, 394, -67, 424, -81, 456, -75, 420, 44, 426, -131, 390, -116, 408, -204, 232, -126, 234, -246, 307, -247, 325, -230, 348, -115, 343, -70, 512, -95, 525, -110, 627, 85, 594, 92, 468, 90, 479, -89, 428, 84, 367, -60, 215, 25, 197, 18, 198, -104, 205, -120, 501, -203, 514, -218, 541, -217, 560, -213, 489, -167, 443, -198, 479, -154, 458, -148, 358, -227, 373, -218, 447, -139 )
@@ -14,6 +15,12 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolI
 outlines = [ PoolVector2Array( 234, -246, 307, -247, 325, -230, 358, -227, 373, -218, 408, -204, 443, -198, 501, -203, 514, -218, 541, -217, 560, -213, 572, -189, 646, -177, 649, 66, 627, 85, 594, 92, 468, 90, 428, 84, 420, 44, 402, 26, 215, 25, 197, 18, 198, -104, 205, -120, 232, -126 ), PoolVector2Array( 348, -115, 343, -70, 367, -60, 394, -67, 390, -116 ), PoolVector2Array( 424, -81, 456, -75, 479, -89, 512, -95, 525, -110, 536, -116, 537, -166, 489, -167, 479, -154, 458, -148, 447, -139, 426, -131 ) ]
 
 [node name="TestWorld" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Music"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -129,8 +136,3 @@ position = Vector2( 520, 112 )
 position = Vector2( 536, 112 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
-
-[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true
-bus = "Music"
