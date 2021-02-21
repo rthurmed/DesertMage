@@ -2,7 +2,7 @@ extends Node2D
 
 
 onready var pause_menu = $CanvasLayer/PauseMenu
-onready var resume_button = $CanvasLayer/PauseMenu/ResumeButton
+onready var resume_button = $CanvasLayer/PauseMenu/GridContainer/ResumeButton
 
 var paused = false
 
@@ -30,15 +30,15 @@ func update_pause(value):
 
 
 func get_stage():
-	return get_node("TestWorld/YSort")
+	return get_node("World/YSort")
 
 
 func get_nav2d():
-	return get_node("TestWorld/Navigation2D")
+	return get_node("World/Navigation2D")
 
 
 func get_player():
-	return get_node("TestWorld/YSort/Player")
+	return get_node("World/YSort/Player")
 
 
 func _on_ResumeButton_pressed():

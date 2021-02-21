@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 
-onready var lifespan: Timer = $Lifespan
 onready var animation: Timer = $AnimationPlayer
 
 
