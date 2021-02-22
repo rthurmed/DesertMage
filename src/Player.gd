@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 
 const SPEED = 8000
+const MAX_LIFE = 10
 
 onready var knockback_module = $KnockbackModule
 onready var blood_particles_module = $BloodParticlesModule
@@ -11,13 +12,18 @@ onready var sprite: AnimatedSprite = $AnimatedSprite
 onready var animation = $AnimationPlayer
 onready var spell_manager = $SpellManager
 onready var hit_timer = $HitTimer
+onready var player_ui = $CanvasLayer/PlayerUI
 
 var movement = Vector2.ZERO
 var velocity = Vector2.ZERO
 var is_moving = false
 var dying = false
-var life = 10
+var life = MAX_LIFE
 var taking_damage = false
+
+
+func _ready():
+	player_ui.set_life(life / MAX_LIFE)
 
 
 func _physics_process(delta):
@@ -54,13 +60,16 @@ func process_animation(_delta):
 
 
 func hit(damage: float, point: Vector2, knockback: Vector2, power: float):
+	if dying:
+		return
+	
 	knockback_module.apply(knockback, power)
 	blood_particles_module.particle(point)
 	
 	life -= damage
 	hit_timer.start()
 	taking_damage = true
-	
+	player_ui.set_life(life / MAX_LIFE)
 	
 	if life < 0 and not dying:
 		die()
