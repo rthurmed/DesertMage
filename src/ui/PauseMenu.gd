@@ -1,6 +1,8 @@
-extends Control
+extends CanvasLayer
 
-onready var resume_button = $GridContainer/ResumeButton
+onready var resume_button = $Menu/GridContainer/ResumeButton
+onready var menu = $Menu
+onready var animation = $AnimationPlayer
 
 var paused = false
 
@@ -13,7 +15,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		update_pause(not paused)
 	
-	visible = paused
+	menu.visible = paused
 	get_tree().paused = paused
 
 
@@ -39,3 +41,13 @@ func _on_ResetButton_pressed():
 	# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 	update_pause(false)
+
+
+func _on_OptionsButton_pressed():
+	animation.play("options")
+	$OptionsMenu/OptionsMenu/FullscreenCheckBox.grab_focus()
+
+
+func _on_OptionsMenu_confirmed():
+	animation.play_backwards("options")
+	$Menu/GridContainer/OptionsButton.grab_focus()

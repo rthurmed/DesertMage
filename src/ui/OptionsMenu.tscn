@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/ui/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/grabber_area.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/ui/slider.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/ui/knob_focus.tres" type="Texture" id=7]
+[ext_resource path="res://assets/ui/checkbox-normal.tres" type="Texture" id=8]
+[ext_resource path="res://assets/ui/knob_normal.tres" type="Texture" id=9]
+[ext_resource path="res://assets/font/font_menu.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/ui/checkbox-checked.tres" type="Texture" id=11]
+
+[node name="OptionsMenu" type="GridContainer"]
+margin_right = 179.0
+margin_bottom = 186.0
+custom_constants/vseparation = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsTitle" type="Label" parent="."]
+margin_right = 179.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
+text = "OPTIONS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="."]
+margin_top = 22.0
+margin_right = 179.0
+margin_bottom = 46.0
+focus_neighbour_top = NodePath("../BackButton")
+focus_neighbour_bottom = NodePath("../MasterVolumeSlider")
+custom_icons/checked = ExtResource( 11 )
+custom_icons/unchecked = ExtResource( 8 )
+custom_fonts/font = ExtResource( 10 )
+text = "Fullscreen"
+
+[node name="MasterVolumeTitle" type="Label" parent="."]
+margin_top = 52.0
+margin_right = 179.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 10 )
+text = "Master Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterVolumeSlider" type="HSlider" parent="."]
+margin_top = 74.0
+margin_right = 179.0
+margin_bottom = 86.0
+focus_neighbour_top = NodePath("../FullscreenCheckBox")
+focus_neighbour_bottom = NodePath("../MusicVolumeSlider")
+size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 7 )
+custom_icons/grabber_disabled = ExtResource( 9 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 9 )
+custom_styles/slider = ExtResource( 3 )
+custom_styles/grabber_area = ExtResource( 2 )
+step = 5.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolumeTitle" type="Label" parent="."]
+margin_top = 92.0
+margin_right = 179.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 10 )
+text = "Music Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+margin_top = 114.0
+margin_right = 179.0
+margin_bottom = 126.0
+focus_neighbour_top = NodePath("../MasterVolumeSlider")
+focus_neighbour_bottom = NodePath("../SfxVolumeSlider")
+size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 7 )
+custom_icons/grabber_disabled = ExtResource( 9 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 9 )
+custom_styles/slider = ExtResource( 3 )
+custom_styles/grabber_area = ExtResource( 2 )
+step = 5.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SfxVolumeTitle" type="Label" parent="."]
+margin_top = 132.0
+margin_right = 179.0
+margin_bottom = 148.0
+custom_fonts/font = ExtResource( 10 )
+text = "Effects Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SfxVolumeSlider" type="HSlider" parent="."]
+margin_top = 154.0
+margin_right = 179.0
+margin_bottom = 166.0
+focus_neighbour_top = NodePath("../MusicVolumeSlider")
+focus_neighbour_bottom = NodePath("../BackButton")
+size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 7 )
+custom_icons/grabber_disabled = ExtResource( 9 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 9 )
+custom_styles/slider = ExtResource( 3 )
+custom_styles/grabber_area = ExtResource( 2 )
+step = 5.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_top = 172.0
+margin_right = 179.0
+margin_bottom = 194.0
+focus_neighbour_top = NodePath("../SfxVolumeSlider")
+focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
+custom_fonts/font = ExtResource( 10 )
+text = "OK"
+flat = true
+[connection signal="toggled" from="FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
+[connection signal="value_changed" from="MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

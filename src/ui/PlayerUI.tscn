@@ -20,7 +20,6 @@ margin_left = 16.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = -16.0
-max_value = 100.0
 value = 40.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 4 )

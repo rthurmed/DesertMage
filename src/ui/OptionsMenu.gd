@@ -1,41 +1,37 @@
 extends Node
 
 
-enum Buses {
-	MASTER = 0,
-	MUSIC = 1,
-	SFX = 2
-}
+onready var options = $"/root/OptionsManager"
+onready var fullscreen_checkbox = $FullscreenCheckBox
+onready var master_slider = $MasterVolumeSlider
+onready var music_slider = $MusicVolumeSlider
+onready var sfx_slider = $SfxVolumeSlider
 
-var min_volume = -80.0
-var initial_volume = []
+signal confirmed()
 
 
 func _ready():
-	for i in Buses:
-		var idx = Buses[i]
-		var volume = AudioServer.get_bus_volume_db(idx)
-		initial_volume.insert(idx, volume)
-
-
-func set_bus_volume(bus: int, volume: int):
-	var percent = (volume / 100.0)
-	var size = abs(min_volume - initial_volume[bus])
-	var value = (percent * size) + min_volume
-	AudioServer.set_bus_volume_db(bus, value)
+	fullscreen_checkbox.pressed = options.get_fullscreen()
+	master_slider.value = options.volume_values[options.Buses.MASTER] * 100
+	music_slider.value = options.volume_values[options.Buses.MUSIC] * 100
+	sfx_slider.value = options.volume_values[options.Buses.SFX] * 100
 
 
 func _on_FullscreenCheckBox_toggled(button_pressed):
-	OS.window_fullscreen = button_pressed
+	options.set_fullscreen(button_pressed)
 
 
 func _on_MasterVolumeSlider_value_changed(value):
-	set_bus_volume(Buses.MASTER, value)
+	options.set_bus_volume(options.Buses.MASTER, value)
 
 
 func _on_MusicVolumeSlider_value_changed(value):
-	set_bus_volume(Buses.MUSIC, value)
+	options.set_bus_volume(options.Buses.MUSIC, value)
 
 
 func _on_SfxVolumeSlider_value_changed(value):
-	set_bus_volume(Buses.SFX, value)
+	options.set_bus_volume(options.Buses.SFX, value)
+
+
+func _on_BackButton_pressed():
+	emit_signal("confirmed")
