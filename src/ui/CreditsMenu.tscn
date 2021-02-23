@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 20 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 48, 133 ), Vector2( 48, -636 ) ]
+"values": [ Vector2( 48, 133 ), Vector2( 48, -711 ) ]
 }
 
 [node name="CreditsMenu" type="Control"]
@@ -41,7 +41,7 @@ anchor_bottom = 1.0
 margin_left = 48.0
 margin_top = 133.0
 margin_right = -48.0
-margin_bottom = 863.002
+margin_bottom = 863.003
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,6 +82,11 @@ Licensed under [url=https://creativecommons.org/licenses/by/3.0/]CC-BY 3.0[/url]
 Source: [url=https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0]https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0[/url]
 Licensed under [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
 
+\"Adventure Intro Title [Cinematic, Epic]\"
+by [url=https://opengameart.org/users/nene]nene[/url]
+Source: [url=https://opengameart.org/content/adventure-intro-title-cinematic-epic]https://opengameart.org/content/adventure-intro-title-cinematic-epic[/url]
+Licensed under [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
+
 [center]Fonts:[/center]
 
 \"Alkhemikal\"
@@ -116,6 +121,11 @@ Music:
 \"Desert_mystic (dynastic Egyptian theme) CC0
 \"by PolygonDan (Dan)
 Source: https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0
+Licensed under CC0
+
+\"Adventure Intro Title [Cinematic, Epic]\"
+by nene
+Source: https://opengameart.org/content/adventure-intro-title-cinematic-epic
 Licensed under CC0
 
 Fonts:

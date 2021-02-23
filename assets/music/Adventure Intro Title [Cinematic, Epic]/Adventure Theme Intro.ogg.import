@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Adventure Theme Intro.ogg-d1df07aa28d7af68780ecae6b4d3ef37.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Adventure Intro Title [Cinematic, Epic]/Adventure Theme Intro.ogg"
+dest_files=[ "res://.import/Adventure Theme Intro.ogg-d1df07aa28d7af68780ecae6b4d3ef37.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

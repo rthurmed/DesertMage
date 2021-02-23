@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/ui/StartMenu.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/wizard-Sheet.png" type="Texture" id=8]
 [ext_resource path="res://src/ui/OptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/ui/CreditsMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/music/Adventure Intro Title [Cinematic, Epic]/Adventure Theme Intro.ogg" type="AudioStream" id=11]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
@@ -94,6 +95,34 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Soundtrack:volume_db")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
 }
 
 [node name="StartMenu" type="Control"]
@@ -284,6 +313,12 @@ anims/loop = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/credits = SubResource( 5 )
 anims/options = SubResource( 4 )
+anims/start = SubResource( 6 )
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+bus = "Music"
 [connection signal="pressed" from="Menu/GridContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

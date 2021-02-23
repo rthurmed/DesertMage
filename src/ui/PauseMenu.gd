@@ -5,6 +5,7 @@ onready var menu = $Menu
 onready var animation = $AnimationPlayer
 
 var paused = false
+var showing_submenu = false
 
 
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not showing_submenu:
 		update_pause(not paused)
 	
 	menu.visible = paused
@@ -45,9 +46,11 @@ func _on_ResetButton_pressed():
 
 func _on_OptionsButton_pressed():
 	animation.play("options")
+	showing_submenu = true
 	$OptionsMenu/Menu/FullscreenCheckBox.grab_focus()
 
 
 func _on_OptionsMenu_confirmed():
 	animation.play_backwards("options")
+	showing_submenu = false
 	$Menu/GridContainer/OptionsButton.grab_focus()

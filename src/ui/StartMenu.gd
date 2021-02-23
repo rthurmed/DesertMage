@@ -13,7 +13,7 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://src/levels/CanyonLab.tscn")
+	animation.play("start")
 
 
 func _on_OptionsButton_pressed():
@@ -43,3 +43,7 @@ func _on_CreditsMenu_confirmed():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "credits":
 		credits_menu.start()
+	
+	if anim_name == "start":
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://src/levels/CanyonLab.tscn")
