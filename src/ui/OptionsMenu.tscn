@@ -9,16 +9,37 @@
 [ext_resource path="res://assets/font/font_menu.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/ui/checkbox-checked.tres" type="Texture" id=11]
 
-[node name="OptionsMenu" type="GridContainer"]
-margin_right = 179.0
-margin_bottom = 186.0
-custom_constants/vseparation = 6
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsTitle" type="Label" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -89.5
+margin_top = -97.0
+margin_right = 89.5
+margin_bottom = 97.0
+custom_constants/vseparation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsTitle" type="Label" parent="Menu"]
 margin_right = 179.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 10 )
@@ -28,7 +49,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="."]
+[node name="FullscreenCheckBox" type="CheckBox" parent="Menu"]
 margin_top = 22.0
 margin_right = 179.0
 margin_bottom = 46.0
@@ -39,7 +60,7 @@ custom_icons/unchecked = ExtResource( 8 )
 custom_fonts/font = ExtResource( 10 )
 text = "Fullscreen"
 
-[node name="MasterVolumeTitle" type="Label" parent="."]
+[node name="MasterVolumeTitle" type="Label" parent="Menu"]
 margin_top = 52.0
 margin_right = 179.0
 margin_bottom = 68.0
@@ -49,7 +70,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MasterVolumeSlider" type="HSlider" parent="."]
+[node name="MasterVolumeSlider" type="HSlider" parent="Menu"]
 margin_top = 74.0
 margin_right = 179.0
 margin_bottom = 86.0
@@ -68,7 +89,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolumeTitle" type="Label" parent="."]
+[node name="MusicVolumeTitle" type="Label" parent="Menu"]
 margin_top = 92.0
 margin_right = 179.0
 margin_bottom = 108.0
@@ -78,7 +99,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicVolumeSlider" type="HSlider" parent="."]
+[node name="MusicVolumeSlider" type="HSlider" parent="Menu"]
 margin_top = 114.0
 margin_right = 179.0
 margin_bottom = 126.0
@@ -97,7 +118,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SfxVolumeTitle" type="Label" parent="."]
+[node name="SfxVolumeTitle" type="Label" parent="Menu"]
 margin_top = 132.0
 margin_right = 179.0
 margin_bottom = 148.0
@@ -107,7 +128,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SfxVolumeSlider" type="HSlider" parent="."]
+[node name="SfxVolumeSlider" type="HSlider" parent="Menu"]
 margin_top = 154.0
 margin_right = 179.0
 margin_bottom = 166.0
@@ -126,7 +147,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="Menu"]
 margin_top = 172.0
 margin_right = 179.0
 margin_bottom = 194.0
@@ -135,8 +156,8 @@ focus_neighbour_bottom = NodePath("../FullscreenCheckBox")
 custom_fonts/font = ExtResource( 10 )
 text = "OK"
 flat = true
-[connection signal="toggled" from="FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
-[connection signal="value_changed" from="MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
-[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
-[connection signal="value_changed" from="SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="toggled" from="Menu/FullscreenCheckBox" to="." method="_on_FullscreenCheckBox_toggled"]
+[connection signal="value_changed" from="Menu/MasterVolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="Menu/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="Menu/SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="pressed" from="Menu/BackButton" to="." method="_on_BackButton_pressed"]

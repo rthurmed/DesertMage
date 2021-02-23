@@ -45,7 +45,7 @@ func _on_ResetButton_pressed():
 
 func _on_OptionsButton_pressed():
 	animation.play("options")
-	$OptionsMenu/OptionsMenu/FullscreenCheckBox.grab_focus()
+	$OptionsMenu/Menu/FullscreenCheckBox.grab_focus()
 
 
 func _on_OptionsMenu_confirmed():

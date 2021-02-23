@@ -18,7 +18,7 @@ func _on_StartButton_pressed():
 
 func _on_OptionsButton_pressed():
 	animation.play("options")
-	$OptionsMenu/OptionsMenu/FullscreenCheckBox.grab_focus()
+	$OptionsMenu/Menu/FullscreenCheckBox.grab_focus()
 
 
 func _on_CreditsButton_pressed():

@@ -2,10 +2,10 @@ extends Node
 
 
 onready var options = $"/root/OptionsManager"
-onready var fullscreen_checkbox = $FullscreenCheckBox
-onready var master_slider = $MasterVolumeSlider
-onready var music_slider = $MusicVolumeSlider
-onready var sfx_slider = $SfxVolumeSlider
+onready var fullscreen_checkbox = $Menu/FullscreenCheckBox
+onready var master_slider = $Menu/MasterVolumeSlider
+onready var music_slider = $Menu/MusicVolumeSlider
+onready var sfx_slider = $Menu/SfxVolumeSlider
 
 signal confirmed()
 
