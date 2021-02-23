@@ -21,6 +21,8 @@ var dying = false
 var life = MAX_LIFE
 var taking_damage = false
 
+signal died()
+
 
 func _ready():
 	player_ui.set_life(life / MAX_LIFE)
@@ -83,3 +85,8 @@ func die():
 
 func _on_HitTimer_timeout():
 	taking_damage = false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "die":
+		emit_signal("died")
