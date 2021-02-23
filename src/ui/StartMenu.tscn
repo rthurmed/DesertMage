@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/ui/StartMenu.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/font/Alkhemikal.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/wizard-Sheet.png" type="Texture" id=8]
 [ext_resource path="res://src/ui/OptionsMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/ui/CreditsMenu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
@@ -37,6 +38,34 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -42, 16 ), Vector2( -32, 16 ), Vector2( -42, 16 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "credits"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CreditsMenu:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 270 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CreditsMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -251,7 +280,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="OptionsMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.509804 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -266,14 +295,22 @@ margin_top = -97.0
 margin_right = 89.4996
 margin_bottom = 97.0
 
+[node name="CreditsMenu" parent="." instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 270.0
+margin_bottom = 270.0
+
 [node name="BgAnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
 anims/loop = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/credits = SubResource( 5 )
 anims/options = SubResource( 4 )
 [connection signal="pressed" from="Menu/GridContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Menu/GridContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="confirmed" from="OptionsMenu/OptionsMenu" to="." method="_on_OptionsMenu_confirmed"]
+[connection signal="confirmed" from="CreditsMenu" to="." method="_on_CreditsMenu_confirmed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

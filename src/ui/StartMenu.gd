@@ -3,8 +3,7 @@ extends Control
 
 onready var bg_animation = $BgAnimationPlayer
 onready var animation = $AnimationPlayer
-
-var showing_options = false
+onready var credits_menu = $CreditsMenu
 
 
 func _ready():
@@ -23,7 +22,8 @@ func _on_OptionsButton_pressed():
 
 
 func _on_CreditsButton_pressed():
-	pass # Replace with function body.
+	animation.play("credits")
+	$CreditsMenu/BackButton.grab_focus()
 
 
 func _on_QuitButton_pressed():
@@ -33,3 +33,13 @@ func _on_QuitButton_pressed():
 func _on_OptionsMenu_confirmed():
 	animation.play_backwards("options")
 	$Menu/GridContainer/OptionsButton.grab_focus()
+
+
+func _on_CreditsMenu_confirmed():
+	animation.play_backwards("credits")
+	$Menu/GridContainer/CreditsButton.grab_focus()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "credits":
+		credits_menu.start()

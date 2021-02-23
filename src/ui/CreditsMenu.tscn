@@ -1,0 +1,186 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/font_menu.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/ui/CreditsMenu.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "display"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 133 ), Vector2( 48, -636 ) ]
+}
+
+[node name="CreditsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 133.0
+margin_right = -48.0
+margin_bottom = 863.002
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+margin_right = 384.0
+margin_bottom = 1000.0
+focus_neighbour_bottom = NodePath("../../BackButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]DESERT MAGE[/center]
+
+
+
+
+
+[center]Programming:[/center]
+
+Arthur Medeiros (https://gamejolt.com/@rthurmed)
+
+[center]Art:[/center]
+
+Arthur Medeiros (https://gamejolt.com/@rthurmed)
+
+[center]Sound effects:[/center]
+
+\"Voices Sound Effects Library\"
+by [url=https://opengameart.org/users/little-robot-sound-factory]Little Robot Sound Factory (Morten Barfod Søegaard)[/url]
+Source: [url=https://opengameart.org/content/voices-sound-effects-library]https://opengameart.org/content/voices-sound-effects-library[/url]
+Licensed under [url=https://creativecommons.org/licenses/by/3.0/]CC-BY 3.0[/url]
+
+[center]Music:[/center]
+
+\"Desert_mystic (dynastic Egyptian theme) CC0
+\"by [url=https://opengameart.org/users/polygondan]PolygonDan (Dan)[/url]
+Source: [url=https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0]https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0[/url]
+Licensed under [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
+
+[center]Fonts:[/center]
+
+\"Alkhemikal\"
+by [url=https://fontenddev.com/]jeti[/url]
+Source: [url=https://www.dafont.com/pt/alkhemikal.font]https://www.dafont.com/pt/alkhemikal.font[/url]
+Licensed under [url=https://creativecommons.org/licenses/by/4.0/]CC BY 4.0[/url]
+"
+meta_underlined = false
+text = "DESERT MAGE
+
+
+
+
+
+Programming:
+
+Arthur Medeiros (https://gamejolt.com/@rthurmed)
+
+Art:
+
+Arthur Medeiros (https://gamejolt.com/@rthurmed)
+
+Sound effects:
+
+\"Voices Sound Effects Library\"
+by Little Robot Sound Factory (Morten Barfod Søegaard)
+Source: https://opengameart.org/content/voices-sound-effects-library
+Licensed under CC-BY 3.0
+
+Music:
+
+\"Desert_mystic (dynastic Egyptian theme) CC0
+\"by PolygonDan (Dan)
+Source: https://opengameart.org/content/desertmystic-dynastic-egyptian-theme-cc0
+Licensed under CC0
+
+Fonts:
+
+\"Alkhemikal\"
+by jeti
+Source: https://www.dafont.com/pt/alkhemikal.font
+Licensed under CC BY 4.0
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_right = 3.05176e-05
+margin_bottom = 45.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotColorRect" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -45.0
+margin_right = 3.05176e-05
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -26.0
+margin_top = 18.0
+margin_right = 28.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 1 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -15.5
+margin_top = -36.0
+margin_right = 15.5
+margin_bottom = -16.0
+focus_neighbour_top = NodePath("../MarginContainer/RichTextLabel")
+custom_fonts/font = ExtResource( 1 )
+text = "OK"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/display = SubResource( 1 )
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
