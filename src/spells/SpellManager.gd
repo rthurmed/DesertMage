@@ -9,6 +9,7 @@ enum Spells {
 
 onready var spells = $Spells
 onready var shield = $SpellShield
+onready var dash = $SpellDash
 
 var active_spell = Spells.POWER_BEAM
 var last_spell = Spells.MAGIC_BULLET
@@ -27,6 +28,7 @@ func deactivate():
 	active_spell = Spells.EMPTY
 	last_spell = Spells.EMPTY
 	shield.enabled = false
+	dash.enabled = false
 	update_spells()
 
 

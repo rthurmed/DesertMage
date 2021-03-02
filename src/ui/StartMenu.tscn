@@ -12,7 +12,7 @@
 [ext_resource path="res://src/ui/CreditsMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/Adventure Intro Title [Cinematic, Epic]/Adventure Theme Intro.ogg" type="AudioStream" id=11]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 24, 24 )
 
@@ -24,8 +24,7 @@ extra_spacing_char = 4
 extra_spacing_space = 2
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "loop"
+[sub_resource type="Animation" id=3]
 length = 10.0
 loop = true
 tracks/0/type = "value"
@@ -41,7 +40,7 @@ tracks/0/keys = {
 "values": [ Vector2( -42, 16 ), Vector2( -32, 16 ), Vector2( -42, 16 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "credits"
 length = 0.4
 tracks/0/type = "value"
@@ -69,8 +68,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "options"
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("OptionsMenu:rect_position")
@@ -142,7 +140,7 @@ tile_data = PoolIntArray( -196616, 16, 1, -196615, 16, 1, -196614, 16, 1, -19661
 
 [node name="Sprite" type="Sprite" parent="TileMap"]
 position = Vector2( 315, 126 )
-texture = SubResource( 3 )
+texture = SubResource( 1 )
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -308,11 +306,11 @@ margin_bottom = 270.0
 
 [node name="BgAnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/loop = SubResource( 1 )
+anims/loop = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/credits = SubResource( 5 )
-anims/options = SubResource( 4 )
+anims/credits = SubResource( 4 )
+anims/options = SubResource( 5 )
 anims/start = SubResource( 6 )
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]

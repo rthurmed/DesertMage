@@ -20,6 +20,7 @@ var is_moving = false
 var dying = false
 var life = MAX_LIFE
 var taking_damage = false
+var dashing = false
 
 signal died()
 
@@ -55,6 +56,8 @@ func process_movement(delta):
 func process_animation(_delta):
 	if taking_damage:
 		sprite.play("hit")
+	elif dashing:
+		return
 	elif is_moving:
 		sprite.play("walk")
 	else:
@@ -79,8 +82,28 @@ func hit(damage: float, point: Vector2, knockback: Vector2, power: float):
 
 func die():
 	dying = true
+	dashing = false
 	animation.play("die")
 	spell_manager.deactivate()
+
+
+func dash(direction: Vector2):
+	var dir = direction.normalized()
+	var ox = round(dir.x)
+	var oy = round(dir.y)
+	var animate = ""
+	
+	if ox == 0:
+		animate = "down" if oy > 0 else "up"
+	else:
+		animate = "right" if ox > 0 else "left"
+	
+	sprite.play(str("dash-", animate))
+	dashing = true
+
+
+func finish_dash():
+	dashing = false
 
 
 func _on_HitTimer_timeout():
