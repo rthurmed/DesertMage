@@ -23,31 +23,31 @@ region = Rect2( 72, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 24, 24, 24 )
+region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 24, 24, 24 )
+region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 72, 24, 24 )
+region = Rect2( 24, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 72, 24, 24 )
+region = Rect2( 48, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 72, 24, 24 )
+region = Rect2( 72, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 72, 24, 24 )
+region = Rect2( 0, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 72, 72, 24, 24 )
+region = Rect2( 24, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
@@ -69,42 +69,42 @@ region = Rect2( 72, 48, 24, 24 )
 atlas = ExtResource( 1 )
 region = Rect2( 24, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 120, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 120, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
 region = Rect2( 24, 120, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
 region = Rect2( 72, 96, 24, 24 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="SpriteFrames" id=20]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 1 ), SubResource( 3 ) ],
 "loop": true,
 "name": "idle",
 "speed": 0.5
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "hit",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "die",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
@@ -117,32 +117,32 @@ animations = [ {
 "name": "happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 19 ) ],
+"frames": [ SubResource( 16 ) ],
 "loop": true,
 "name": "dash-down",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 22 ) ],
+"frames": [ SubResource( 17 ) ],
 "loop": true,
 "name": "dash-right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 21 ) ],
+"frames": [ SubResource( 18 ) ],
 "loop": true,
 "name": "dash-left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ) ],
+"frames": [ SubResource( 19 ) ],
 "loop": true,
 "name": "dash-up",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=17]
+[sub_resource type="CapsuleShape2D" id=21]
 radius = 8.0
 height = 5.0
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=22]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -186,12 +186,12 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 16 )
+frames = SubResource( 20 )
 animation = "dash-right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
-shape = SubResource( 17 )
+shape = SubResource( 21 )
 
 [node name="Crosshair" type="Node2D" parent="."]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -215,7 +215,7 @@ body_path = NodePath("..")
 blood_color = Color( 0.407843, 0.219608, 0.423529, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 18 )
+anims/die = SubResource( 22 )
 
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.25
