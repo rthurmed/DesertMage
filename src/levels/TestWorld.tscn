@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/props/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemies/Dummy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemies/Imp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/music/Desert_Mystic By Polygondan/Desert Mystic2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/enemies/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/levels/TestWorld.gd" type="Script" id=8]
 [ext_resource path="res://src/ui/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/world/Fireplace.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/world/DoubleDoor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 537, -166, 572, -189, 646, -177, 649, 66, 536, -116, 402, 26, 394, -67, 424, -81, 456, -75, 420, 44, 426, -131, 390, -116, 408, -204, 232, -126, 234, -246, 307, -247, 325, -230, 348, -115, 343, -70, 512, -95, 525, -110, 627, 85, 594, 92, 468, 90, 479, -89, 428, 84, 367, -60, 215, 25, 197, 18, 198, -104, 205, -120, 501, -203, 514, -218, 541, -217, 560, -213, 489, -167, 443, -198, 479, -154, 458, -148, 358, -227, 373, -218, 447, -139 )
@@ -40,6 +41,9 @@ navpoly = SubResource( 1 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 
+[node name="Fireplace1" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( -157, -24 )
+
 [node name="Imp1" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 502, -49 )
 
@@ -67,75 +71,31 @@ position = Vector2( 66, -245 )
 [node name="Dummy5" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 126, -184 )
 
-[node name="Door1" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -8, 80 )
+[node name="DoubleDoor1" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 0, 80 )
 
-[node name="Door2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 8, 80 )
-scale = Vector2( -1, 1 )
+[node name="DoubleDoor2" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -144, 80 )
 
-[node name="Door3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -136, 80 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor3" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -144, 224 )
 
-[node name="Door4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -152, 80 )
+[node name="DoubleDoor4" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -320, 16 )
 
-[node name="Door5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -152, 224 )
+[node name="DoubleDoor5" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -480, -272 )
 
-[node name="Door6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -136, 224 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor6" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( -32, -112 )
 
-[node name="Door7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -312, 16 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor7" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 288, 48 )
 
-[node name="Door8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -328, 16 )
+[node name="DoubleDoor8" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 624, -208 )
 
-[node name="Door9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -488, -272 )
-
-[node name="Door10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -472, -272 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door11" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -24, -112 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door12" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -40, -112 )
-
-[node name="Door13" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 280, 48 )
-
-[node name="Door14" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 296, 48 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door15" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 632, -208 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door16" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 616, -208 )
-
-[node name="Door17" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 520, 112 )
-
-[node name="Door18" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 536, 112 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor9" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 528, 112 )
 
 [node name="PauseMenu" parent="." instance=ExtResource( 9 )]

@@ -4,11 +4,11 @@
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/levels/CanyonLab.gd" type="Script" id=4]
-[ext_resource path="res://src/props/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/enemies/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/enemies/Imp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/ui/PauseMenu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/font/font_menu.tres" type="DynamicFont" id=9]
+[ext_resource path="res://src/world/DoubleDoor.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 2437, 1031, 2488, 1096, 2266, 1098, 2186, 1096, 2133, 1028, 2515, 746, 2478, 750, 2453, 748, 2446, 581, 2535, 614, 2577, 702, 774, -552, 721, -610, 830, -591, 927, -555, 814, -547, 789, -546, 1324, 203, 1395, 189, 1549, 187, 1601, 213, 1592, 430, 1504, 419, 1308, 231, 1481, -341, 1468, -335, 1347, -332, 1372, -343, 1468, -382, 1493, -380, 1495, -413, 1577, -412, 1578, -116, 1494, -338, 1493, -280, 1546, -116, 1836, 803, 2215, 746, 2261, 809, 2249, 840, 2138, 837, 1951, 708, 2122, 620, 2178, 682, 1139, 1443, 1126, 1496, 1082, 1453, 1070.09, 1363.43, 1135, 1359, 2032, 586, 2070, 581, 1951, 662, 1995, 603, 1480, -269, 1494, -224, 1923, 713, 1889, 711, 1829, 739, 1931, 631, 1897, 595, 1889, 628, 1868, 689, 1779, 725, 1181, 1047, 1296, 1048, 1388, 1105, 1312, 1171, 1128, 1107, 2029, 95, 2013, 211, 1850, 122, 1826, 84, 1768, -123, 1845, 191, 1948, 282, 1454, 455, 1450, 509, 1353, 470, 1322, 430, 1277, 240, 1365, -392, 1466, -509, 1241, -406, 1237, -450, 1323, -387, 1215, -396, 1470, -230, 1466, -119, 1217, -160, 1242, -173, 1343, -220, 1500, 622, 1392, 658, 1355, 632, 1345, 510, 1529, 580, 944, 1431, 806, 1430, 778, 1372, 913, 1333, 1047, 1365, 1031, 1272, 1182, 1276, 12, 310, 13, 357, -13, 354, -14, 317, 855, -509, 1197, -452, 1126, -456, 843, 483, 858, 431, 953, 347, 951, 443, 838, 602, 816, 580, 855, 313, 1804, 248, 1941, 335, 1814, 392, 2576, 773, 2548, 805, 2524, 780, 838, 635, 859, 631, 892, 646, 900, 660, 905, 727, 801, 729, 704, 729, 801, 656, 2452, 776, 2476, 782, 1430, 19, 1431, -75, 1520, -71, 1459, 26, 1605, -71, 1668, 54, 1516, 53, 1550, -78, 1321, -272, 1322, -234, 999, -235, 995, -278, 2265, 1508, 2502, 1510, 2503, 1545, 1606, 1546, 2183, 1510, -420, 180, -424, 6, -200, 7, -197, 81, -134, 187, -139, 86, -88, 188, 2069, 882, 2093, 881, 2122, 881, 2119, 1023, 2036, 1098, 2043, 891, 1738, 1510, 1687, 1511, 826, -381, 788, -164, 769.466, -163.931, 774, -520, 788, -522, 813, -521, 828, -518, 601, -876, 668, -877, 668, -863, 666, -838, 636, -806, 585, -849, -191, 421, -233, 419, -230, 369, -117, 356, 1468, -283, 1364, -280, 855, -288, 876, -71, 1399, -75, 1399, 74.6454, 1333, 112, 549, -789, 533, -789, 533, -826, 555, -842, 2760, 186, 2860, 221, 2898, 286, 2833, 324, 2736, 318, 2711, 222, 2478, 10, 2350, -121, 2397, -167, 2525, -159, 2620, -54, 2642, 36, 2500, 138, 2608, 124, 1321, -342, 1001, -338, 1000, -388, 1177, 1798, 1179, 1510, 1366, 1509, 1370, 1703, 1608, 1796, 1416, 1703, 1419, 1506, 1742, 1417, 1684, 1418, 1700, 1405, 1724, 1397, 1698, 1372, 1726, 1372, 314, 431, 282, 401, 300, 381, 361, 461, -116.506, 43.8628, -140, 43, -165, 35, -169, -43, -117, -47, 42, -46, 71, -38, 76, -3, 69, 43, -116, 83, 23, 86, 24, 309, -50, 317, 347, 727, 345, 666, 435, 640, 502, 658, 1193, -406, 1129, -405, 1083, -450, 857, -384, 1082, -405, 2533, 271, 2623, 206, 2629, 279, -180, 260, -124, 259, -194, 275, -77, 311, -90, 310, 1196, -210, 1191, -171, 1129, -175, 1125, -215, 700, -859, 699, -839, 2385, 296, 2337, 375, 2324, 314, 2124, 386, 531, 977, 459, 982, 454, 950, 518, 921, 660, -198, 629, -200, 627, -238, 649, -242, 561, -758, 550, -759, 825, -227, 826, -166, 812, -164, 1253, 535, 1299, 518, 1267, 629, 1196, 585, 1228, 668, 1149, 601, 2411, 750, 2405, 777, 2383, 775, 2359, 747, -77, 356, -50, 354, 1481, -237, 1370, -233, 583, 475, 556, 600, 493, 598, 558, 389, 2334, 521, 2260, 648, 2294, 560, 2300, 488, 2321, 409, 2253, 444, 617, -71, 618, -107, 663, -115, 748, -128, 790, -121, 1525, -114, 1495, -120, -227, 297, -224, 277, 744, -545, 735, -493, 697, -491, 668, -548, 1811, 1313, 1845, 1364, 1814, 1398, 1775, 1397, 1765, 1367, 1752, 1271, 1633, 1243, 1659, 1372, 2168, 235, 2244, 182, 2306, 236, 2130, 436, 2037, 424, 2050, 388, 1961, 394, 2010, 348, 1672, 241, 1711, 454, 1648, 452, 1241, 232, 1229, 418, 1162, 393, 1149, 372, -93, 523, -164, 523, 849, 1162, 803, 1144, 810, 1081, 890, 1116, 1623, -152, 1655, -169, 1700, -121, 1236, 204, 1063, 344, 822, 131, 822, 59, 990, 971, 1015, 1005, 990, 1039, 937, 940, 716, -302, 740, -295, 1238, 1276, 1038, 1185, 1057, 1118, 1322, 1243, 631, -730, 609, -701, 569, -729, 643, -715, 663, -664, 642, -619, 617, -655, 653, -575, 1454, 1255, 1503, 1221, 1602, 1220, 1623, 1394, 1520, 1390, 1329, 1359, 1417, 1271, 1348, 1267, 986, 1120, 1009, 1104, 794, 789, 886, 882, 740, 795, 763, 781, 1250, 760, 1108, 893, 1048, 879, 984, 823, 1007, 760, 1221, 732, 161, 350, 54, 356, 63, 280, 89, 273, 206, 291, 1684, 635, 1740, 599, 1787, 598, 1866, 656, 1714, 732, 1666, 701, 1823, 564, 1858, 566, 63, 508, 49, 540, -72, 539, 311, 622, 303, 683, 258, 713, 215, 685, 215, 605, 242, 582, 321, 580, 380, 604, 361, 530, 435, 607, 1704, 746, 1578, 760, 1574, 853, 1704, 817, 1621, 1059, -246, 356, -249, 314, 107, 499, 149, 427, 295, 300, 122, 225, 165, 191, 223, 166, 302, 161, 832, 296, 779, 291, 732, 229, 769, 160, 339, -123, 277, 38, 189, 23, 176, -23, 168, -85, 202, -120, 253, -138, 324, -139, 829, 774, 865, 804, 610, 1047, 570, 876, 622, 859, 709, 1045, 685, 789, 740, 753, 765, 750, 2437, 785, 2488, 806, 2069, 846, 2091, 843, 662, -302, 688, -313, 664, -178, 682, -149, 1870, -201, 1982, -219, 2068, -200, 2133, -106, 2070, 43, 1697, 83, 953, -277, 839, -267, 953, -233, 841, -233, 2206, 871, 2171, 858, 989, 711, 1125, 584, 1348, 180, 1308, 172, 812, -128, 824, -120, 825, -79, 801, -44, 753, -33, 1961, 933, 1940, 1029, 1833, 1077, 1711, 1089, 1810, 835, 406, -124, 478, -30, 341.325, 63.5279, 797, 551, 815, 502, 991, 467, 460, 605, 454, 184, 491, 216, 555, 307, 1259, 173, 821, 3, 670, 114, 643, 143, 623, 142, 601, 121, 594, 61, 696, 71, 1059, 476, 1108, 508, 868, 598, 938, 673, 934, 622, 343, 128, 412, 135, 1420, 165, 1453, 167, 1279, 168, 2012, 840, 1984, 899, 1745, 839, 1555, 1024, 1527, 883, 1418, 887, 1471, 1009, 1446, 982, 1381, 978, 1270, 925, 1390, 853, 1317, 773, 1366, 794, 1153, 915, 915, 602, 724, 48, 540, 35, 160, -55, 420, 88, 567, -28, 481, 45, 852, -116, 1102, -161, 1101, -398, 525, 229, 545, 257, 1235, -212, 1078, -169, 857, -222, 1083, -211, 973, -224, 861, 610, 488, 649, 460, 634, 461, 71, 955, -339, 854, -342, 955, -388, 839, -344, 842, -377, 826, -281, 828, -336 )
@@ -181,100 +181,41 @@ position = Vector2( 1299, 810 )
 [node name="Imp39" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 863, 1385 )
 
-[node name="Door1" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -72, 336 )
+[node name="DoubleDoor1" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( -64, 336 )
 
-[node name="Door2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -56, 336 )
-scale = Vector2( -1, 1 )
+[node name="DoubleDoor2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 0, 336 )
 
-[node name="Door3" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 8, 336 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( -128, 64 )
 
-[node name="Door4" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -8, 336 )
+[node name="DoubleDoor4" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 448, 624 )
 
-[node name="Door5" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -136, 64 )
+[node name="DoubleDoor5" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 752, 768 )
 
-[node name="Door6" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -120, 64 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor6" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 848, 624 )
 
-[node name="Door7" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 456, 624 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor7" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 800, -144 )
 
-[node name="Door8" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 440, 624 )
+[node name="DoubleDoor8" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 800, -528 )
 
-[node name="Door9" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 744, 768 )
+[node name="DoubleDoor9" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1536, -96 )
 
-[node name="Door10" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 760, 768 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor10" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 2464, 768 )
 
-[node name="Door11" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 856, 624 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
+[node name="DoubleDoor11" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 2080, 864 )
 
-[node name="Door12" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 840, 624 )
-
-[node name="Door13" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 792, -144 )
-
-[node name="Door14" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 808, -144 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door15" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 808, -528 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door16" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 792, -528 )
-
-[node name="Door17" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1528, -96 )
-
-[node name="Door18" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1544, -96 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door19" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 2472, 768 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door20" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 2456, 768 )
-
-[node name="Door21" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 2072, 864 )
-
-[node name="Door22" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 2088, 864 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door23" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1720, 1392 )
-rotation = -3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Door24" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1704, 1392 )
+[node name="DoubleDoor12" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1712, 1392 )
 
 [node name="StageUI" type="CanvasLayer" parent="."]
 
