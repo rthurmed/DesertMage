@@ -1,0 +1,240 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/ui/ui-inventory-panel.png" type="Texture" id=1]
+[ext_resource path="res://src/ui/SpellChoose.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/HabilitySwitcherUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/icons/spell-icon-bow.tres" type="Texture" id=4]
+[ext_resource path="res://assets/ui/icons/spell-icon-beam.tres" type="Texture" id=5]
+[ext_resource path="res://assets/ui/icons/spell-icon-bullet.tres" type="Texture" id=6]
+[ext_resource path="res://assets/ui/icons/spell-icon-dash.tres" type="Texture" id=7]
+[ext_resource path="res://assets/ui/icons/spell-icon-shield.tres" type="Texture" id=8]
+[ext_resource path="res://assets/ui/ui-spell-chooser-ring.png" type="Texture" id=9]
+[ext_resource path="res://assets/font/font_inventory.tres" type="DynamicFont" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TexturePanel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 240, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TexturePanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:opened")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="HabilitySwitcherUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexturePanel" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -135.0
+margin_right = 240.0
+margin_bottom = 135.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="Control" parent="TexturePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = -24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TexturePanel/Margin"]
+anchor_right = 1.0
+margin_right = -6.10352e-05
+margin_bottom = 168.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellLabel" type="Label" parent="TexturePanel/Margin/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.721569, 0.435294, 0.313726, 1 )
+text = "Spells"
+
+[node name="SpellGrid" type="GridContainer" parent="TexturePanel/Margin/VBoxContainer"]
+margin_top = 15.0
+margin_right = 192.0
+margin_bottom = 55.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellChoose1" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
+margin_right = 46.0
+icon = ExtResource( 6 )
+
+[node name="SpellChoose2" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
+margin_left = 50.0
+margin_right = 96.0
+icon = ExtResource( 5 )
+value = 1
+
+[node name="SpellChoose3" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
+margin_left = 100.0
+margin_right = 146.0
+icon = ExtResource( 4 )
+value = 2
+
+[node name="SkillLabel" type="Label" parent="TexturePanel/Margin/VBoxContainer"]
+margin_top = 59.0
+margin_right = 192.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.721569, 0.435294, 0.313726, 1 )
+text = "Skills"
+
+[node name="SkillGrid" type="GridContainer" parent="TexturePanel/Margin/VBoxContainer"]
+margin_top = 74.0
+margin_right = 192.0
+margin_bottom = 114.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellChooseSkill1" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
+margin_right = 47.0
+icon = ExtResource( 8 )
+
+[node name="SpellChooseSkill2" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
+margin_left = 51.0
+margin_right = 98.0
+icon = ExtResource( 7 )
+
+[node name="SelectedSpells" type="Control" parent="TexturePanel/Margin"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -55.0
+margin_right = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellChoose1" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_bottom = 0.0
+icon = ExtResource( 4 )
+
+[node name="SpellChoose2" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 0.0
+margin_bottom = 0.0
+icon = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TexturePanel/Margin/SelectedSpells"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -38.5
+margin_right = 38.5
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.721569, 0.435294, 0.313726, 1 )
+text = "Selected Spells"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActiveSkill" type="Control" parent="TexturePanel/Margin"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -72.0001
+margin_top = -55.0
+margin_right = -1.00012
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpellChoose" parent="TexturePanel/Margin/ActiveSkill" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+margin_bottom = 0.0
+icon = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="TexturePanel/Margin/ActiveSkill"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -34.5
+margin_right = 32.5
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.721569, 0.435294, 0.313726, 1 )
+text = "Passive skill"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ring" type="TextureRect" parent="TexturePanel"]
+visible = false
+margin_left = 26.0
+margin_top = 39.0
+margin_right = 66.0
+margin_bottom = 79.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 1 )

@@ -2,13 +2,13 @@
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/world/MagicMirror.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/enemies/Dummy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/enemies/Imp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/music/Desert_Mystic By Polygondan/Desert Mystic2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/enemies/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/levels/TestWorld.gd" type="Script" id=8]
 [ext_resource path="res://src/ui/PauseMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/world/Fireplace.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/world/DoubleDoor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -41,8 +41,8 @@ navpoly = SubResource( 1 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 
-[node name="Fireplace1" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( -157, -24 )
+[node name="MagicMirror" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -194, 108 )
 
 [node name="Imp1" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 502, -49 )

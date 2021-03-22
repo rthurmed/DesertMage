@@ -11,8 +11,10 @@ onready var camera: Camera2D = $Camera2D
 onready var sprite: AnimatedSprite = $AnimatedSprite
 onready var animation = $AnimationPlayer
 onready var spell_manager = $SpellManager
+onready var ability_switcher = $SpellManager/CanvasLayer/HabilitySwitcherUI
 onready var hit_timer = $HitTimer
 onready var player_ui = $CanvasLayer/PlayerUI
+onready var camera_animation = $Camera2D/AnimationPlayer
 
 var movement = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -113,3 +115,18 @@ func _on_HitTimer_timeout():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
 		emit_signal("died")
+
+
+func _on_InteractArea_interact_mirror():
+	if ability_switcher.opened:
+		_on_InteractArea_walked_out_mirror()
+		return
+	
+	ability_switcher.open()
+	camera_animation.play("offset")
+
+
+func _on_InteractArea_walked_out_mirror():
+	if ability_switcher.opened:
+		ability_switcher.close()
+		camera_animation.play_backwards("offset")

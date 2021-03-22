@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/wizard-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/modules/BloodParticlesModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Crosshair.gd" type="Script" id=7]
 [ext_resource path="res://src/ui/PlayerUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/InteractArea.gd" type="Script" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -27,63 +28,63 @@ region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 72, 24, 24 )
+region = Rect2( 24, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 72, 24, 24 )
+region = Rect2( 48, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 72, 24, 24 )
+region = Rect2( 72, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 72, 72, 24, 24 )
+region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 24, 24, 24 )
+region = Rect2( 24, 120, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 24, 24, 24 )
+region = Rect2( 48, 120, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 48, 24, 24 )
+region = Rect2( 72, 96, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 48, 24, 24 )
+region = Rect2( 0, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 48, 24, 24 )
+region = Rect2( 24, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 72, 48, 24, 24 )
+region = Rect2( 24, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 0, 24, 24 )
+region = Rect2( 0, 120, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 120, 24, 24 )
+region = Rect2( 0, 48, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 120, 24, 24 )
+region = Rect2( 24, 48, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 120, 24, 24 )
+region = Rect2( 48, 48, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
-region = Rect2( 72, 96, 24, 24 )
+region = Rect2( 72, 48, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=20]
 animations = [ {
@@ -92,55 +93,71 @@ animations = [ {
 "name": "idle",
 "speed": 0.5
 }, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "hit",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "walk",
+"name": "hit",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "sit",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 15 ) ],
-"loop": true,
-"name": "happy",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 16 ) ],
-"loop": true,
-"name": "dash-down",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 17 ) ],
-"loop": true,
-"name": "dash-right",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 18 ) ],
+"frames": [ SubResource( 9 ) ],
 "loop": true,
 "name": "dash-left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 19 ) ],
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "dash-right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "dash-up",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "happy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "dash-down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "sit",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=21]
 radius = 8.0
 height = 5.0
+
+[sub_resource type="Animation" id=24]
+resource_name = "offset"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="Animation" id=22]
 tracks/0/type = "value"
@@ -180,6 +197,9 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="CircleShape2D" id=23]
+radius = 32.0
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -187,7 +207,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 20 )
-animation = "dash-right"
+animation = "die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
@@ -206,6 +226,9 @@ texture = ExtResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+anims/offset = SubResource( 24 )
+
 [node name="SpellManager" parent="." instance=ExtResource( 4 )]
 
 [node name="KnockbackModule" parent="." instance=ExtResource( 5 )]
@@ -223,5 +246,15 @@ wait_time = 0.25
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="InteractArea" type="Area2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource( 23 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]
+[connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_InteractArea_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="InteractArea" method="_on_InteractArea_body_exited"]
+[connection signal="interact_mirror" from="InteractArea" to="." method="_on_InteractArea_interact_mirror"]
+[connection signal="walked_out_mirror" from="InteractArea" to="." method="_on_InteractArea_walked_out_mirror"]

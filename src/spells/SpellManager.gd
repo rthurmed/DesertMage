@@ -11,6 +11,7 @@ enum Spells {
 onready var spells = $Spells
 onready var shield = $SpellShield
 onready var dash = $SpellDash
+onready var ability_switcher = $CanvasLayer/HabilitySwitcherUI
 
 var active_spell = Spells.MAGIC_BOW
 var last_spell = Spells.MAGIC_BULLET
