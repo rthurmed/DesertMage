@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 20 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 48, 133 ), Vector2( 48, -711 ) ]
+"values": [ Vector2( 48, 133 ), Vector2( 48, -811 ) ]
 }
 
 [node name="CreditsMenu" type="Control"]
@@ -39,9 +39,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 48.0
-margin_top = 133.0
+margin_top = -711.0
 margin_right = -48.0
-margin_bottom = 863.003
+margin_bottom = 19.0034
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -93,7 +93,11 @@ Licensed under [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
 by [url=https://fontenddev.com/]jeti[/url]
 Source: [url=https://www.dafont.com/pt/alkhemikal.font]https://www.dafont.com/pt/alkhemikal.font[/url]
 Licensed under [url=https://creativecommons.org/licenses/by/4.0/]CC BY 4.0[/url]
-"
+
+\"Piacevoli\"
+by [url=https://fontenddev.com/]jeti[/url]
+Source: [url=https://www.dafont.com/pt/piacevoli.font]https://www.dafont.com/pt/piacevoli.font[/url]
+Licensed under [url=https://creativecommons.org/licenses/by/4.0/]CC BY 4.0[/url]"
 meta_underlined = false
 text = "DESERT MAGE
 
@@ -134,7 +138,11 @@ Fonts:
 by jeti
 Source: https://www.dafont.com/pt/alkhemikal.font
 Licensed under CC BY 4.0
-"
+
+\"Piacevoli\"
+by jeti
+Source: https://www.dafont.com/pt/piacevoli.font
+Licensed under CC BY 4.0"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

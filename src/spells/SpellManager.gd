@@ -1,20 +1,20 @@
 extends Node2D
 
 
-enum Spells {
-	EMPTY = -1
-	MAGIC_BULLET = 0,
-	POWER_BEAM = 1,
-	MAGIC_BOW = 2
-}
+const Spells = Constants.Spells
 
-onready var spells = $Spells
-onready var shield = $SpellShield
-onready var dash = $SpellDash
 onready var ability_switcher = $CanvasLayer/HabilitySwitcherUI
+onready var spells_instances = {
+	Spells.SHIELD: $SpellShield,
+	Spells.DASH: $SpellDash,
+	Spells.MAGIC_BULLET: $SpellMagicBullet,
+	Spells.POWER_BEAM: $SpellPowerBeam,
+	Spells.MAGIC_BOW: $SpellMagicBow
+}
 
 var active_spell = Spells.MAGIC_BOW
 var last_spell = Spells.MAGIC_BULLET
+var active_skill = Spells.DASH
 
 
 func _ready():
@@ -27,10 +27,9 @@ func _process(_delta):
 
 
 func deactivate():
+	active_skill = Spells.EMPTY
 	active_spell = Spells.EMPTY
 	last_spell = Spells.EMPTY
-	shield.enabled = false
-	dash.enabled = false
 	update_spells()
 
 
@@ -41,11 +40,24 @@ func set_active_spell(spell):
 
 
 func update_spells():
-	for i in spells.get_child_count():
-		set_spell_status(i, i == active_spell)
+	for i in spells_instances:
+		var state = i == active_skill or i == active_spell
+		var instance = spells_instances.get(i)
+		set_spell_status(instance, state)
 
 
-func set_spell_status(idx: int, value: bool):
-	var spell_node = spells.get_child(idx)
+func set_spell_status(spell_node: Node, value: bool):
+	if spell_node == null: return
 	spell_node.visible = value
 	spell_node.enabled = value
+
+
+func _on_HabilitySwitcherUI_updated_skill(value):
+	active_skill = value
+	update_spells()
+
+
+func _on_HabilitySwitcherUI_updated_spells(value1, value2):
+	active_spell = value1
+	last_spell = value2
+	update_spells()

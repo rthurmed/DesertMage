@@ -28,19 +28,19 @@ region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 24, 72, 24, 24 )
+region = Rect2( 0, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 72, 24, 24 )
+region = Rect2( 24, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 72, 72, 24, 24 )
+region = Rect2( 48, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 72, 24, 24 )
+region = Rect2( 72, 72, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
@@ -93,14 +93,14 @@ animations = [ {
 "name": "idle",
 "speed": 0.5
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 8 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "hit",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ) ],
@@ -143,7 +143,7 @@ animations = [ {
 radius = 8.0
 height = 5.0
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=22]
 resource_name = "offset"
 length = 0.5
 tracks/0/type = "value"
@@ -159,7 +159,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -197,7 +197,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="CircleShape2D" id=23]
+[sub_resource type="CircleShape2D" id=24]
 radius = 32.0
 
 [node name="Player" type="KinematicBody2D"]
@@ -227,7 +227,7 @@ texture = ExtResource( 3 )
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
-anims/offset = SubResource( 24 )
+anims/offset = SubResource( 22 )
 
 [node name="SpellManager" parent="." instance=ExtResource( 4 )]
 
@@ -238,7 +238,7 @@ body_path = NodePath("..")
 blood_color = Color( 0.407843, 0.219608, 0.423529, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 22 )
+anims/die = SubResource( 23 )
 
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.25
@@ -251,7 +251,7 @@ wait_time = 0.25
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]
 [connection signal="body_entered" from="InteractArea" to="InteractArea" method="_on_InteractArea_body_entered"]

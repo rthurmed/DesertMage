@@ -1,13 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/ui/ui-inventory-panel.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/SpellChoose.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ui/HabilitySwitcherUI.gd" type="Script" id=3]
-[ext_resource path="res://assets/ui/icons/spell-icon-bow.tres" type="Texture" id=4]
-[ext_resource path="res://assets/ui/icons/spell-icon-beam.tres" type="Texture" id=5]
-[ext_resource path="res://assets/ui/icons/spell-icon-bullet.tres" type="Texture" id=6]
-[ext_resource path="res://assets/ui/icons/spell-icon-dash.tres" type="Texture" id=7]
-[ext_resource path="res://assets/ui/icons/spell-icon-shield.tres" type="Texture" id=8]
 [ext_resource path="res://assets/ui/ui-spell-chooser-ring.png" type="Texture" id=9]
 [ext_resource path="res://assets/font/font_inventory.tres" type="DynamicFont" id=10]
 
@@ -109,19 +104,17 @@ __meta__ = {
 
 [node name="SpellChoose1" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
 margin_right = 46.0
-icon = ExtResource( 6 )
+value = 4
 
 [node name="SpellChoose2" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
 margin_left = 50.0
 margin_right = 96.0
-icon = ExtResource( 5 )
-value = 1
+value = 5
 
 [node name="SpellChoose3" parent="TexturePanel/Margin/VBoxContainer/SpellGrid" instance=ExtResource( 2 )]
 margin_left = 100.0
 margin_right = 146.0
-icon = ExtResource( 4 )
-value = 2
+value = 6
 
 [node name="SkillLabel" type="Label" parent="TexturePanel/Margin/VBoxContainer"]
 margin_top = 59.0
@@ -140,14 +133,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpellChooseSkill1" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
+[node name="SkillChoose1" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
 margin_right = 47.0
-icon = ExtResource( 8 )
+value = 0
 
-[node name="SpellChooseSkill2" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
+[node name="SkillChoose2" parent="TexturePanel/Margin/VBoxContainer/SkillGrid" instance=ExtResource( 2 )]
 margin_left = 51.0
 margin_right = 98.0
-icon = ExtResource( 7 )
+value = 1
 
 [node name="SelectedSpells" type="Control" parent="TexturePanel/Margin"]
 anchor_top = 1.0
@@ -158,14 +151,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpellChoose1" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
+[node name="Slot1" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -40.0
 margin_bottom = 0.0
-icon = ExtResource( 4 )
+value = 6
 
-[node name="SpellChoose2" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
+[node name="Slot2" parent="TexturePanel/Margin/SelectedSpells" instance=ExtResource( 2 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -174,7 +167,7 @@ margin_left = -40.0
 margin_top = -40.0
 margin_right = 0.0
 margin_bottom = 0.0
-icon = ExtResource( 6 )
+value = 4
 
 [node name="Label" type="Label" parent="TexturePanel/Margin/SelectedSpells"]
 anchor_left = 0.5
@@ -194,14 +187,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -72.0001
+margin_left = -86.0002
 margin_top = -55.0
-margin_right = -1.00012
+margin_right = -1.00015
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpellChoose" parent="TexturePanel/Margin/ActiveSkill" instance=ExtResource( 2 )]
+[node name="Slot" parent="TexturePanel/Margin/ActiveSkill" instance=ExtResource( 2 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -210,17 +203,17 @@ margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
 margin_bottom = 0.0
-icon = ExtResource( 7 )
+value = 1
 
 [node name="Label" type="Label" parent="TexturePanel/Margin/ActiveSkill"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -34.5
-margin_right = 32.5
+margin_left = -40.5
+margin_right = 40.5
 margin_bottom = 11.0
 custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.721569, 0.435294, 0.313726, 1 )
-text = "Passive skill"
+text = "Secondary skill"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -238,3 +231,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/open = SubResource( 1 )
+[connection signal="selected" from="TexturePanel/Margin/VBoxContainer/SpellGrid/SpellChoose1" to="." method="_on_SpellChoose_selected"]
+[connection signal="selected" from="TexturePanel/Margin/VBoxContainer/SpellGrid/SpellChoose2" to="." method="_on_SpellChoose_selected"]
+[connection signal="selected" from="TexturePanel/Margin/VBoxContainer/SpellGrid/SpellChoose3" to="." method="_on_SpellChoose_selected"]
+[connection signal="selected" from="TexturePanel/Margin/VBoxContainer/SkillGrid/SkillChoose1" to="." method="_on_SkillChoose_selected"]
+[connection signal="selected" from="TexturePanel/Margin/VBoxContainer/SkillGrid/SkillChoose2" to="." method="_on_SkillChoose_selected"]

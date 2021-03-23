@@ -1,0 +1,14 @@
+extends Node
+
+
+enum Spells {
+	EMPTY = -1
+	SHIELD = 0
+	DASH = 1
+	GRAPPLING_HOOK = 2
+	SKILL4 = 3
+	MAGIC_BULLET = 4
+	POWER_BEAM = 5
+	MAGIC_BOW = 6
+	MAGIC_SWORD = 7
+}

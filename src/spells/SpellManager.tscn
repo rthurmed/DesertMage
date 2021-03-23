@@ -13,22 +13,24 @@ z_index = 200
 script = ExtResource( 4 )
 
 [node name="SpellDash" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="SpellShield" parent="." instance=ExtResource( 1 )]
 visible = false
 enabled = false
 
-[node name="Spells" type="Node2D" parent="."]
-
-[node name="SpellMagicBullet" parent="Spells" instance=ExtResource( 2 )]
+[node name="SpellMagicBullet" parent="." instance=ExtResource( 2 )]
 visible = false
 
-[node name="SpellPowerBeam" parent="Spells" instance=ExtResource( 3 )]
+[node name="SpellPowerBeam" parent="." instance=ExtResource( 3 )]
 visible = false
 enabled = false
 
-[node name="SpellMagicBow" parent="Spells" instance=ExtResource( 6 )]
+[node name="SpellMagicBow" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HabilitySwitcherUI" parent="CanvasLayer" instance=ExtResource( 7 )]
+[connection signal="updated_skill" from="CanvasLayer/HabilitySwitcherUI" to="." method="_on_HabilitySwitcherUI_updated_skill"]
+[connection signal="updated_spells" from="CanvasLayer/HabilitySwitcherUI" to="." method="_on_HabilitySwitcherUI_updated_spells"]
